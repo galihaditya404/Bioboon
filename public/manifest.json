@@ -1,0 +1,21 @@
+{
+  "name": "Bioboon",
+  "short_name": "Bioboon",
+  "description": "Organic Intelligence Network",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050907",
+  "theme_color": "#050907",
+  "icons": [
+    {
+      "src": "/assets/bioboon-img.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/bioboon-img.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
