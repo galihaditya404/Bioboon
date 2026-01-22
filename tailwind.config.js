@@ -1,25 +1,34 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {
       colors: {
-        void: '#050907', // Deepest background
-        moss: '#1a2f23', // Organic texture/secondary
+        // Dark Mode (The Void)
+        void: '#050907',
+        moss: '#1a2f23',
         bio: {
-          400: '#4ade80', // Standard vitality
+          400: '#4ade80',
           500: '#10b981',
-          glow: '#d9f99d', // Bioluminescence
+          glow: '#d9f99d',
         },
         alert: '#ff4d4d',
-        pale: '#ecfccb', // Text
+        pale: '#ecfccb',
+
+        // Light Mode (Daylight)
+        day: {
+          bg: '#f0fdf4', // Soft Mint
+          surface: '#ffffff',
+          text: '#14532d', // Deep Forest
+          border: '#bbf7d0',
+        }
       },
       fontFamily: {
-        sans: ['"Space Mono"', 'monospace'], // Technical data look
-        serif: ['"Cormorant Garamond"', 'serif'], // Organic/Human touch
+        sans: ['"Space Mono"', 'monospace'],
+        serif: ['"Cormorant Garamond"', 'serif'],
       },
       backgroundImage: {
-        'noise': "url('/assets/noise.png')", // We will use CSS filter instead for noise
+        'noise': "url('/assets/noise.png')",
       },
       animation: {
         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',

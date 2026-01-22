@@ -1,23 +1,22 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { cn } from '../../utils/cn';
+import { useTheme } from '../../utils/ThemeContext';
 
-// Standard icon fix (we will style it with CSS filters or replace it later)
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+// We no longer need the default icon image fix, as we are using DivIcon
+// but keeping imports just in case of fallback, though we won't use them for the main markers.
 
-let DefaultIcon = L.icon({
-    iconUrl: icon,
-    shadowUrl: iconShadow,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    className: 'invert opacity-80 hue-rotate-180' // CSS Filter to make standard marker look "tech"
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
+const createTechIcon = (theme) => {
+    return L.divIcon({
+        className: theme === 'dark' ? 'custom-marker' : 'custom-marker light-marker',
+        html: `<div class="marker-pin"></div>`,
+        iconSize: [20, 20],
+        iconAnchor: [10, 10], // Center it
+        popupAnchor: [0, -15]
+    });
+};
 
 const HOUSES = [
     { id: 1, name: "Unit_01", coords: [-7.085525, 110.450117] },
@@ -29,31 +28,54 @@ const HOUSES = [
 
 export default function BioMap({ liveData }) {
     const mapRef = useRef(null);
+    const { theme } = useTheme();
     const center = [-7.085525, 110.450117];
 
     return (
-        <div className="h-full w-full relative group">
-            {/* Tech Overlays */}
-            <div className="absolute top-4 left-4 z-[400] text-[10px] font-mono text-bio-400 opacity-60 pointer-events-none">
+        <div className="h-full w-full relative group overflow-hidden">
+            {/* Tech Overlays - Grid Pattern */}
+            <div className="absolute inset-0 pointer-events-none z-[300] opacity-10 dark:opacity-20"
+                style={{
+                    backgroundImage: `linear-gradient(${theme === 'dark' ? '#4ade80' : '#15803d'} 1px, transparent 1px), linear-gradient(90deg, ${theme === 'dark' ? '#4ade80' : '#15803d'} 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px'
+                }}
+            />
+
+            {/* Radar Scan Effect */}
+            <div className="absolute inset-[-50%] w-[200%] h-[200%] pointer-events-none z-[300] opacity-10 dark:opacity-10 animate-[radar-spin_10s_linear_infinite]"
+                style={{
+                    background: `conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 300deg, ${theme === 'dark' ? '#4ade80' : '#15803d'} 360deg)`
+                }}
+            />
+
+            {/* Info Overlay */}
+            <div className="absolute top-4 left-4 z-[400] text-[10px] font-mono text-day-text dark:text-bio-400 opacity-60 pointer-events-none transition-colors">
                 COORD: {center.join(', ')} <br />
-                MODE: SATELLITE_LINK
+                MODE: {theme === 'dark' ? 'SATELLITE_LINK' : 'STANDARD_VIEW'}
             </div>
 
             <MapContainer
                 center={center}
                 zoom={18}
                 scrollWheelZoom={false}
-                className="h-full w-full bg-void z-0"
+                className="h-full w-full bg-day-bg dark:bg-void z-0 transition-colors"
                 ref={mapRef}
                 zoomControl={false}
             >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                    url={theme === 'dark'
+                        ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                        : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+                    }
                 />
 
                 {HOUSES.map((house) => (
-                    <Marker key={house.id} position={house.coords}>
+                    <Marker
+                        key={house.id}
+                        position={house.coords}
+                        icon={createTechIcon(theme)}
+                    >
                         <Popup className="tech-popup">
                             <div className="font-mono text-xs">
                                 <strong className="block mb-1 text-void text-sm">{house.name}</strong>
@@ -77,13 +99,13 @@ export default function BioMap({ liveData }) {
                 ))}
             </MapContainer>
 
-            {/* Vignette Overlay - Smoother Gradient */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_30%,#050907_100%)] z-[400]" />
+            {/* Vignette Overlay */}
+            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_30%,#f0fdf4_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_30%,#050907_100%)] z-[400] transition-colors duration-500" />
 
-            {/* Decorative corners - Thinner, more elegant */}
+            {/* Decorative corners */}
             <div className="absolute bottom-6 right-6 z-[400] flex gap-1.5 opacity-60">
                 {[1, 2, 3].map(i => (
-                    <div key={i} className={`w-[2px] h-4 bg-bio-500/40 ${i === 3 ? 'animate-pulse' : ''}`} />
+                    <div key={i} className={`w-[2px] h-4 bg-day-text dark:bg-bio-500/40 ${i === 3 ? 'animate-pulse' : ''} transition-colors`} />
                 ))}
             </div>
         </div>
