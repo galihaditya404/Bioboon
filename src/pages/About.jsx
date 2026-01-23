@@ -121,11 +121,11 @@ export default function About() {
                             {/* Content */}
                             <div className="p-4 md:p-5 flex flex-col sm:flex-row gap-5 items-start sm:items-center h-full">
                                 {/* Photo - Significantly Larger */}
-                                <div className="w-full sm:w-32 h-48 sm:h-40 shrink-0 rounded bg-day-bg dark:bg-moss/20 border border-day-border dark:border-white/10 overflow-hidden relative shadow-lg transition-colors">
+                                <div className="w-full sm:w-32 h-auto aspect-[3/4] sm:h-40 sm:aspect-auto shrink-0 rounded bg-day-bg dark:bg-moss/20 border border-day-border dark:border-white/10 overflow-hidden relative shadow-lg transition-colors">
                                     <img
                                         src={member.img}
                                         alt={member.name}
-                                        className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-500"
+                                        className="w-full h-full object-cover object-top grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-500"
                                     />
                                     {/* Overlay scanline effect */}
                                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-day-text/10 dark:to-bio-500/10 opacity-50"></div>
@@ -141,7 +141,7 @@ export default function About() {
 
                                     <div className="mt-3 pt-3 border-t border-day-border dark:border-white/5 flex items-center gap-2 transition-colors">
                                         <QrCode className="w-4 h-4 text-day-text/30 dark:text-white/20" />
-                                        <span className="text-[9px] text-day-text/30 dark:text-white/20 font-mono">PIMNAS-37</span>
+                                        <span className="text-[9px] text-day-text/30 dark:text-white/20 font-mono">PKM-PM</span>
                                     </div>
                                 </div>
                             </div>
