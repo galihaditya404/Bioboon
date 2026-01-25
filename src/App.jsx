@@ -32,7 +32,7 @@ function App() {
           </main>
 
           <footer className="relative z-10 py-6 text-center text-day-text/40 dark:text-moss text-xs font-mono uppercase tracking-widest opacity-60 dark:opacity-40 transition-colors">
-            <p>Bioboon System v2.0 // Organic Intelligence Network</p>
+            <p>Mobile Biogas Tech</p>
           </footer>
         </div>
       </Router>

@@ -39,11 +39,11 @@ export default function Dashboard() {
             {/* Cinematic Header */}
             <div className="flex flex-col md:flex-row justify-between items-end border-b border-day-border dark:border-white/5 pb-8 transition-colors">
                 <div>
-                    <h1 className="text-5xl md:text-7xl font-serif italic text-day-text dark:text-white mb-3 tracking-tighter opacity-90 transition-colors">System Overview</h1>
+                    <h1 className="text-5xl md:text-7xl font-serif italic text-day-text dark:text-white mb-3 tracking-tighter opacity-90 transition-colors">Monitoring Distribusi Biogas</h1>
                     <div className="flex items-center gap-4">
                         <span className="w-8 h-[1px] bg-day-border dark:bg-bio-400/50"></span>
                         <p className="font-mono text-[10px] text-day-text/60 dark:text-bio-400 tracking-[0.3em] uppercase opacity-60">
-                            Sector 01 // Live Telemetry
+                            Jabungan, Semarang
                         </p>
                     </div>
                 </div>

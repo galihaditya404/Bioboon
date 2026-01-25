@@ -151,7 +151,7 @@ export default function About() {
             </div>
 
             <div className="mt-12 p-6 rounded-lg border border-day-border dark:border-white/5 bg-day-surface dark:bg-moss/10 flex flex-col items-center text-center transition-colors">
-                <p className="font-mono text-xs text-day-text/70 dark:text-bio-400 tracking-widest mb-2">PROJECT HEADQUARTERS</p>
+                <p className="font-mono text-xs text-day-text/70 dark:text-bio-400 tracking-widest mb-2">Lokasi Pengabdian</p>
                 <h2 className="font-serif text-2xl text-day-text dark:text-white italic">Jabungan, Semarang, Indonesia</h2>
                 <div className="mt-4 flex gap-4 text-xs text-day-text/50 dark:text-pale/60 font-mono">
                     <span>LAT: -7.0855</span>

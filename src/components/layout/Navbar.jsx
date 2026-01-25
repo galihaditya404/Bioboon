@@ -18,8 +18,8 @@ export default function Navbar() {
     }, []);
 
     const navLinks = [
-        { name: "Live_Monitor", path: "/", icon: <Home className="w-5 h-5" /> },
-        { name: "Unit_Personnel", path: "/about", icon: <Users className="w-5 h-5" /> },
+        { name: "Monitoring", path: "/", icon: <Home className="w-5 h-5" /> },
+        { name: "Tim", path: "/about", icon: <Users className="w-5 h-5" /> },
     ];
 
     return (
@@ -44,7 +44,7 @@ export default function Navbar() {
                         </div>
                         <div className="flex flex-col">
                             <span className="font-serif text-2xl leading-none italic text-day-text dark:text-bio-glow tracking-wide">Bioboon</span>
-                            <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-day-text/60 dark:text-bio-400 opacity-60">Organic Network</span>
+                            <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-day-text/60 dark:text-bio-400 opacity-60">Program Kreativitas Mahasiswa - Pengabdian Masyarakat</span>
                         </div>
                     </Link>
 
