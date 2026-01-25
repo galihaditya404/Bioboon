@@ -19,11 +19,11 @@ const createTechIcon = (theme) => {
 };
 
 const HOUSES = [
-    { id: 1, name: "Unit_01", coords: [-7.085525, 110.450117] },
-    { id: 2, name: "Unit_02", coords: [-7.085453, 110.449984] },
-    { id: 3, name: "Unit_03", coords: [-7.085546, 110.449848] },
-    { id: 4, name: "Unit_04", coords: [-7.085588, 110.449680] },
-    { id: 5, name: "Unit_05", coords: [-7.085289, 110.449601] }
+    { id: 1, name: "RUMAH 1", coords: [-7.085525, 110.450117] },
+    { id: 2, name: "RUMAH 2", coords: [-7.085453, 110.449984] },
+    { id: 3, name: "RUMAH 3", coords: [-7.085546, 110.449848] },
+    { id: 4, name: "RUMAH 4", coords: [-7.085588, 110.449680] },
+    { id: 5, name: "RUMAH 5", coords: [-7.085289, 110.449601] }
 ];
 
 export default function BioMap({ liveData }) {
