@@ -88,33 +88,34 @@ export default function Navbar() {
             </div>
 
             {/* --- MOBILE BOTTOM DOCK (Navigation) --- */}
-            <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-sm">
-                <div className="bg-day-surface/90 dark:bg-black/80 backdrop-blur-xl border border-day-border dark:border-white/10 rounded-2xl shadow-2xl p-2 flex justify-around items-center">
+            <div className="md:hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-auto">
+                <div className="bg-white/10 dark:bg-black/20 backdrop-blur-2xl border border-white/20 dark:border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.1)] p-2 px-6 flex items-center justify-center gap-8 ring-1 ring-white/10">
 
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             to={link.path}
                             className={cn(
-                                "flex flex-col items-center justify-center w-14 h-14 rounded-xl transition-all duration-300",
+                                "relative flex items-center justify-center w-10 h-10 transition-all duration-500",
                                 location.pathname === link.path
-                                    ? "bg-day-text text-day-bg dark:bg-bio-glow dark:text-void shadow-[0_0_15px_rgba(74,222,128,0.3)] translate-y-[-5px]"
-                                    : "text-day-text/50 dark:text-white/40 hover:text-day-text dark:hover:text-white"
+                                    ? "text-day-text dark:text-bio-glow scale-110"
+                                    : "text-day-text/40 dark:text-white/30 hover:text-day-text/80 dark:hover:text-white/80"
                             )}
                         >
                             {link.icon}
-                            <span className="text-[9px] font-mono mt-1 opacity-80 decoration-none">{link.name === "Live_Monitor" ? "LIVE" : "TEA"}</span>
+                            {location.pathname === link.path && (
+                                <span className="absolute -bottom-1 w-1 h-1 bg-current rounded-full animate-bounce shadow-[0_0_8px_currentColor]" />
+                            )}
                         </Link>
                     ))}
 
-                    <div className="w-[1px] h-8 bg-day-text/10 dark:bg-white/10 mx-2" />
+                    <div className="w-[1px] h-5 bg-day-text/10 dark:bg-white/10" />
 
                     <button
                         onClick={toggleTheme}
-                        className="flex flex-col items-center justify-center w-14 h-14 rounded-xl text-day-text/50 dark:text-white/40 hover:bg-day-bg/50 dark:hover:bg-white/5 transition-colors"
+                        className="relative flex items-center justify-center w-10 h-10 text-day-text/40 dark:text-white/30 hover:text-day-text/80 dark:hover:text-white/80 transition-all duration-300"
                     >
                         {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                        {/* <span className="text-[9px] font-mono mt-1">THEME</span> */}
                     </button>
                 </div>
             </div>
