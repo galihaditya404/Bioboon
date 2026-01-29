@@ -78,12 +78,11 @@ export default function Navbar() {
             </nav>
 
             {/* --- MOBILE NAVBAR (Top - Branding Only) --- */}
+            {/* --- MOBILE NAVBAR (Top - Branding Only) --- */}
             <div className="md:hidden fixed top-0 w-full z-40 p-4 flex justify-center pointer-events-none">
-                <div className="px-4 py-2 bg-day-surface/80 dark:bg-void/80 backdrop-blur-md border border-day-border dark:border-white/10 rounded-full shadow-lg pointer-events-auto">
-                    <Link to="/" className="flex items-center gap-2">
-                        <Globe className="h-4 w-4 text-day-text dark:text-bio-400" />
-                        <span className="font-serif text-lg italic text-day-text dark:text-bio-glow">Bioboon</span>
-                    </Link>
+                <div className="px-5 py-2.5 bg-day-surface/80 dark:bg-void/80 backdrop-blur-md border border-day-border dark:border-white/10 rounded-full shadow-lg pointer-events-auto flex items-center gap-2.5">
+                    <img src="/assets/bioboon-img.png" alt="Bioboon" className="h-6 w-auto object-contain" />
+                    <span className="font-serif text-lg italic text-day-text dark:text-bio-glow leading-none pt-0.5">Bioboon</span>
                 </div>
             </div>
 
