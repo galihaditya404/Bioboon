@@ -1,4 +1,4 @@
-# Bioboon // Organic Intelligence Network
+# Bioboon - PKM PM
 
 > **Program Kreativitas Mahasiswa - Pengabdian Masyarakat (PKM-PM)**
 > *Pemanfaatan Kotoran Ternak sebagai Biogas dan Bio-slurry Menggunakan Katalis EM4 Berbasis IoT di Jabungan, Semarang, Guna Mencapai Kemandirian Energi.*
